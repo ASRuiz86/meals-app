@@ -29,6 +29,7 @@
     },
     "experiments": {
       "baseUrl": "/meals-app"
-    }
+    },
+    "assetBundlePatterns": ["assets/*"]
   }
 }

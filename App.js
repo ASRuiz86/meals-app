@@ -1,16 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
-import CategoriesScreen from './screens/CategoriesScreen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MealsOverviewScreen from './screens/MealsOverviewScreen';
-import MealDetailsScreen from './screens/MealDetailsScreen';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import FavoritesScreen from './screens/FavoritesScreen';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet } from "react-native";
+import CategoriesScreen from "./screens/CategoriesScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import MealDetailsScreen from "./screens/MealDetailsScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import FavoritesScreen from "./screens/FavoritesScreen";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useFonts } from "expo-font";
 // import FavoritesContextProvider from './store/context/favorites-context';
-import { Provider } from 'react-redux';
-import { store } from './store/redux/store';
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,21 +21,21 @@ const DrawerNavigator = () => {
     <Drawer.Navigator
       screenOptions={{
         sceneStyle: {
-          backgroundColor: '#24180f',
+          backgroundColor: "#24180f",
         },
         drawerStyle: {
-          backgroundColor: '#351401',
+          backgroundColor: "#351401",
         },
-        drawerInactiveTintColor: 'white',
-        drawerActiveTintColor: '#351401',
-        drawerActiveBackgroundColor: '#e4baa1',
+        drawerInactiveTintColor: "white",
+        drawerActiveTintColor: "#351401",
+        drawerActiveBackgroundColor: "#e4baa1",
       }}
     >
       <Drawer.Screen
         name='Categories'
         component={CategoriesScreen}
         options={{
-          title: 'All Categories',
+          title: "All Categories",
           drawerIcon: ({ color, size }) => (
             <Ionicons name='list' color={color} size={size} />
           ),
@@ -44,7 +45,7 @@ const DrawerNavigator = () => {
         name='Favorites'
         component={FavoritesScreen}
         options={{
-          title: 'Favorites',
+          title: "Favorites",
           drawerIcon: ({ color, size }) => (
             <Ionicons name='star' color={color} size={size} />
           ),
@@ -55,6 +56,16 @@ const DrawerNavigator = () => {
 };
 
 export default function App() {
+  /** ① Load Ionicons.font (returns boolean) */
+  const [fontsLoaded] = useFonts({
+    Ionicons: require("./assets/fonts/Ionicons.ttf"),
+  });
+
+  /** ② Wait until the font is in memory */
+  if (!fontsLoaded) {
+    return null; // or a splash / ActivityIndicator
+  }
+
   return (
     <>
       <StatusBar style='dark' />
@@ -64,7 +75,7 @@ export default function App() {
           <Stack.Navigator
             screenOptions={{
               contentStyle: {
-                backgroundColor: '#24180f',
+                backgroundColor: "#24180f",
               },
             }}
           >
