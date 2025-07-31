@@ -1,12 +1,15 @@
 {
   "name": "meals-app",
   "version": "1.0.0",
+  "homepage": "https://asruiz86.github.io/meals-app",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "expo export --platform web --output-dir dist --clear && echo > dist/.nojekyll",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@react-navigation/drawer": "^7.5.3",
@@ -25,7 +28,9 @@
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "expo-cli": "^6.3.10",
+    "gh-pages": "^6.3.0"
   },
   "private": true
 }
