@@ -25,6 +25,9 @@
       "package": "com.anonymous.mealsapp"
     },
     "web": {
+      "build": {
+        "publicPath": "https://asruiz86.github.io/meals-app/"
+      },
       "favicon": "./assets/favicon.png"
     }
   }
